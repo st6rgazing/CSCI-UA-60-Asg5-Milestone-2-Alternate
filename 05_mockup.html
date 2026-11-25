@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CloudNine</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #222;
+        background: #fff;
+      }
+      header {
+        background: #2c3e50;
+        color: #fff;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+        height: 52px;
+      }
+      header .logo {
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 40px;
+      }
+      header a {
+        color: #dfe6ec;
+        text-decoration: none;
+        margin-right: 22px;
+        cursor: pointer;
+      }
+      header a.on {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+      header .user {
+        margin-left: auto;
+        font-size: 13px;
+        color: #dfe6ec;
+      }
+      main {
+        max-width: 1050px;
+        margin: 0 auto;
+        padding: 24px 30px 60px;
+      }
+      h1 {
+        font-size: 22px;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 16px;
+        margin: 28px 0 10px;
+      }
+      p.sub {
+        color: #666;
+        margin: 0 0 20px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 7px 9px;
+        text-align: left;
+      }
+      th {
+        background: #f0f0f0;
+      }
+      td.n,
+      th.n {
+        text-align: right;
+      }
+      a.l {
+        color: #1f5fa8;
+        cursor: pointer;
+      }
+      .boxes {
+        display: flex;
+        gap: 14px;
+      }
+      .box {
+        flex: 1;
+        border: 1px solid #ccc;
+        padding: 12px 14px;
+      }
+      .box b {
+        display: block;
+        font-size: 20px;
+        margin-top: 4px;
+      }
+      .form-row {
+        margin-bottom: 10px;
+      }
+      input,
+      select {
+        font: inherit;
+        padding: 5px 7px;
+        border: 1px solid #aaa;
+      }
+      button {
+        font: inherit;
+        padding: 6px 14px;
+        border: 1px solid #888;
+        background: #eee;
+        cursor: pointer;
+      }
+      button.main {
+        background: #2c3e50;
+        color: #fff;
+        border-color: #2c3e50;
+      }
+      .red {
+        color: #b00;
+      }
+      .page {
+        display: none;
+      }
+      .page.on {
+        display: block;
+      }
+      .two {
+        display: flex;
+        gap: 24px;
+      }
+      .two > div {
+        flex: 1;
+      }
+      label {
+        display: inline-block;
+        width: 140px;
+      }
+      .chart {
+        display: flex;
+        align-items: flex-end;
+        gap: 18px;
+        height: 200px;
+        border-left: 1px solid #999;
+        border-bottom: 1px solid #999;
+        padding: 20px 12px 0;
+      }
+      .chart div {
+        flex: 1;
+        background: #5b7c99;
+        position: relative;
+      }
+      .chart span {
+        position: absolute;
+        top: -18px;
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+      }
+      .months {
+        display: flex;
+        gap: 18px;
+        padding: 4px 12px 0;
+        font-size: 12px;
+        color: #555;
+      }
+      .months div {
+        flex: 1;
+        text-align: center;
+      }
+      footer {
+        text-align: center;
+        color: #888;
+        font-size: 12px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="logo">CloudNine</span>
+      <a data-p="home" class="on">Home</a>
+      <a data-p="dc">Data Centers</a>
+      <a data-p="clients">Clients</a>
+      <a data-p="billing">Billing</a>
+      <a data-p="reserve">Reserve</a>
+      <span class="user">Logged in as: Priya Raman (staff)</span>
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <div class="page on" id="home">
+        <h1>Dashboard</h1>
+        <p class="sub">Showing: Q2 2026 (Apr – Jun)</p>
+
+        <div class="boxes">
+          <div class="box">Revenue this quarter<b>$802,002</b></div>
+          <div class="box">Active reservations<b>78</b></div>
+          <div class="box">Overdue invoices<b class="red">$24,422</b></div>
+          <div class="box">Outages (Jan–Jun)<b>46</b></div>
+        </div>
+
+        <h2>Revenue per month</h2>
+        <div class="chart">
+          <div style="height: 47%"><span>$145k</span></div>
+          <div style="height: 49%"><span>$154k</span></div>
+          <div style="height: 58%"><span>$182k</span></div>
+          <div style="height: 70%"><span>$218k</span></div>
+          <div style="height: 88%"><span>$273k</span></div>
+          <div style="height: 100%"><span>$311k</span></div>
+        </div>
+        <div class="months">
+          <div>Jan</div>
+          <div>Feb</div>
+          <div>Mar</div>
+          <div>Apr</div>
+          <div>May</div>
+          <div>Jun</div>
+        </div>
+
+        <div class="two">
+          <div>
+            <h2>Revenue by region</h2>
+            <table>
+              <tr>
+                <th>Region</th>
+                <th class="n">Q1</th>
+                <th class="n">Q2</th>
+              </tr>
+              <tr>
+                <td>US East</td>
+                <td class="n">$176,282</td>
+                <td class="n">$297,351</td>
+              </tr>
+              <tr>
+                <td>Canada Central</td>
+                <td class="n">$104,510</td>
+                <td class="n">$170,993</td>
+              </tr>
+              <tr>
+                <td>EU Central</td>
+                <td class="n">$101,188</td>
+                <td class="n">$154,394</td>
+              </tr>
+              <tr>
+                <td>US West</td>
+                <td class="n">$90,265</td>
+                <td class="n">$137,897</td>
+              </tr>
+              <tr>
+                <td>Asia Pacific</td>
+                <td class="n">$8,827</td>
+                <td class="n">$41,367</td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <h2>Top 5 clients</h2>
+            <table>
+              <tr>
+                <th>Client</th>
+                <th class="n">Revenue (H1)</th>
+              </tr>
+              <tr>
+                <td><a class="l" data-p="clients">Bluefin Capital Group</a></td>
+                <td class="n">$211,976</td>
+              </tr>
+              <tr>
+                <td>
+                  <a class="l" data-p="clients">Meridian Health Network</a>
+                </td>
+                <td class="n">$191,607</td>
+              </tr>
+              <tr>
+                <td>
+                  <a class="l" data-p="clients">Danube Versicherung AG</a>
+                </td>
+                <td class="n">$123,748</td>
+              </tr>
+              <tr>
+                <td>
+                  <a class="l" data-p="clients">Rheinwerk Logistik GmbH</a>
+                </td>
+                <td class="n">$84,856</td>
+              </tr>
+              <tr>
+                <td>
+                  <a class="l" data-p="clients"
+                    >Lakeshore Provincial Digital Services</a
+                  >
+                </td>
+                <td class="n">$80,067</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA CENTERS -->
+      <div class="page" id="dc">
+        <h1>Data Centers</h1>
+        <p class="sub">
+          % reserved is for Q2 2026, outages are for Jan – Jun 2026
+        </p>
+        <div class="form-row">
+          Region:
+          <select>
+            <option>All</option>
+            <option>US East</option>
+            <option>US West</option>
+            <option>Canada Central</option>
+            <option>EU Central</option>
+            <option>Asia Pacific</option>
+          </select>
+          &nbsp; Search: <input type="text" placeholder="data center name" />
+          <button>Go</button>
+        </div>
+        <table>
+          <tr>
+            <th>Data center</th>
+            <th>City</th>
+            <th>Region</th>
+            <th class="n">Resources</th>
+            <th class="n">% reserved</th>
+            <th class="n">Outages</th>
+            <th class="n">Avg repair time</th>
+          </tr>
+          <tr>
+            <td>CN-ASH-01</td>
+            <td>Ashburn</td>
+            <td>US East</td>
+            <td class="n">28</td>
+            <td class="n">61.9%</td>
+            <td class="n">3</td>
+            <td class="n">445 min</td>
+          </tr>
+          <tr>
+            <td>CN-NWK-01</td>
+            <td>Newark</td>
+            <td>US East</td>
+            <td class="n">21</td>
+            <td class="n">58.7%</td>
+            <td class="n">6</td>
+            <td class="n">221 min</td>
+          </tr>
+          <tr>
+            <td>CN-ASH-02</td>
+            <td>Ashburn</td>
+            <td>US East</td>
+            <td class="n">24</td>
+            <td class="n">55.0%</td>
+            <td class="n">5</td>
+            <td class="n">227 min</td>
+          </tr>
+          <tr>
+            <td>CN-RIC-01</td>
+            <td>Richmond</td>
+            <td>US East</td>
+            <td class="n">23</td>
+            <td class="n">51.6%</td>
+            <td class="n">2</td>
+            <td class="n">428 min</td>
+          </tr>
+          <tr>
+            <td>CN-HIL-01</td>
+            <td>Hillsboro</td>
+            <td>US West</td>
+            <td class="n">39</td>
+            <td class="n">49.5%</td>
+            <td class="n">4</td>
+            <td class="n">280 min</td>
+          </tr>
+          <tr>
+            <td>CN-TOR-01</td>
+            <td>Toronto</td>
+            <td>Canada Central</td>
+            <td class="n">31</td>
+            <td class="n">46.9%</td>
+            <td class="n">3</td>
+            <td class="n">132 min</td>
+          </tr>
+          <tr>
+            <td>CN-FRA-01</td>
+            <td>Frankfurt</td>
+            <td>EU Central</td>
+            <td class="n">25</td>
+            <td class="n">45.1%</td>
+            <td class="n">1</td>
+            <td class="n">95 min</td>
+          </tr>
+          <tr>
+            <td>CN-MTL-01</td>
+            <td>Montreal</td>
+            <td>Canada Central</td>
+            <td class="n">43</td>
+            <td class="n">44.3%</td>
+            <td class="n red">11</td>
+            <td class="n">185 min</td>
+          </tr>
+          <tr>
+            <td>CN-MUC-01</td>
+            <td>Munich</td>
+            <td>EU Central</td>
+            <td class="n">14</td>
+            <td class="n">42.2%</td>
+            <td class="n">1</td>
+            <td class="n">175 min</td>
+          </tr>
+          <tr>
+            <td>CN-FRA-02</td>
+            <td>Frankfurt</td>
+            <td>EU Central</td>
+            <td class="n">20</td>
+            <td class="n">41.5%</td>
+            <td class="n">3</td>
+            <td class="n">277 min</td>
+          </tr>
+          <tr>
+            <td>CN-RNO-01</td>
+            <td>Reno</td>
+            <td>US West</td>
+            <td class="n">35</td>
+            <td class="n">33.3%</td>
+            <td class="n">5</td>
+            <td class="n">272 min</td>
+          </tr>
+          <tr>
+            <td>CN-BER-01</td>
+            <td>Berlin</td>
+            <td>EU Central</td>
+            <td class="n">19</td>
+            <td class="n">31.8%</td>
+            <td class="n">0</td>
+            <td class="n">–</td>
+          </tr>
+          <tr>
+            <td>CN-SIN-01</td>
+            <td>Singapore</td>
+            <td>Asia Pacific</td>
+            <td class="n">20</td>
+            <td class="n">27.2%</td>
+            <td class="n">2</td>
+            <td class="n">590 min</td>
+          </tr>
+          <tr>
+            <td>CN-SIN-02</td>
+            <td>Singapore</td>
+            <td>Asia Pacific</td>
+            <td class="n">17</td>
+            <td class="n">15.9%</td>
+            <td class="n">0</td>
+            <td class="n">–</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- CLIENTS -->
+      <div class="page" id="clients">
+        <h1>Clients</h1>
+        <p class="sub">Click a client to see their details</p>
+        <div class="form-row">
+          Search: <input type="text" placeholder="client name" /> &nbsp; Type:
+          <select>
+            <option>All</option>
+            <option>Enterprise</option>
+            <option>Government</option>
+            <option>Startup</option>
+            <option>Academic</option>
+            <option>Nonprofit</option>
+          </select>
+          <button>Search</button>
+        </div>
+        <div class="two">
+          <div style="flex: 0 0 330px">
+            <table>
+              <tr>
+                <th>Client</th>
+                <th>Type</th>
+              </tr>
+              <tr>
+                <td><a class="l">Bluefin Capital Group</a></td>
+                <td>Enterprise</td>
+              </tr>
+              <tr style="background: #eef3f8">
+                <td><b>Meridian Health Network</b></td>
+                <td>Enterprise</td>
+              </tr>
+              <tr>
+                <td><a class="l">Danube Versicherung AG</a></td>
+                <td>Enterprise</td>
+              </tr>
+              <tr>
+                <td><a class="l">Rheinwerk Logistik GmbH</a></td>
+                <td>Enterprise</td>
+              </tr>
+              <tr>
+                <td><a class="l">Lakeshore Provincial Digital Services</a></td>
+                <td>Government</td>
+              </tr>
+              <tr>
+                <td><a class="l">Harborview Retail Co.</a></td>
+                <td>Enterprise</td>
+              </tr>
+              <tr>
+                <td><a class="l">Pinecrest Credit Union</a></td>
+                <td>Enterprise</td>
+              </tr>
+              <tr>
+                <td><a class="l">Northgate University</a></td>
+                <td>Academic</td>
+              </tr>
+              <tr>
+                <td><a class="l">Cascadia Game Works</a></td>
+                <td>Startup</td>
+              </tr>
+              <tr>
+                <td colspan="2" style="color: #666">
+                  Page 1 of 2 &nbsp; <a class="l">Next</a>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div>
+            <h2 style="margin-top: 0">Meridian Health Network</h2>
+            <table>
+              <tr>
+                <th style="width: 180px">Industry</th>
+                <td>Healthcare</td>
+              </tr>
+              <tr>
+                <th>Tier</th>
+                <td>Platinum</td>
+              </tr>
+              <tr>
+                <th>Contract</th>
+                <td>Multi-year (15% discount)</td>
+              </tr>
+              <tr>
+                <th>Account manager</th>
+                <td>Priya Raman</td>
+              </tr>
+              <tr>
+                <th>Revenue (Jan–Jun)</th>
+                <td>$191,607</td>
+              </tr>
+              <tr>
+                <th>Balance owed</th>
+                <td>$22,130 (due Jul 30)</td>
+              </tr>
+            </table>
+            <h2>Projects</h2>
+            <table>
+              <tr>
+                <th>Project</th>
+                <th class="n">Q2 cost</th>
+              </tr>
+              <tr>
+                <td>Mosaic Platform</td>
+                <td class="n">$38,655</td>
+              </tr>
+              <tr>
+                <td>Granite Migration</td>
+                <td class="n">$23,211</td>
+              </tr>
+              <tr>
+                <td>Delta Modernization</td>
+                <td class="n">$10,870</td>
+              </tr>
+              <tr>
+                <td>Helix Training</td>
+                <td class="n">$9,997</td>
+              </tr>
+            </table>
+            <h2>Outages that affected this client</h2>
+            <p>8 outages, 42.9 hours total. SLA credits given: $750.45</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BILLING -->
+      <div class="page" id="billing">
+        <h1>Billing</h1>
+        <p class="sub">Unpaid invoices as of July 15, 2026</p>
+        <div class="form-row">
+          Show:
+          <select>
+            <option>Unpaid</option>
+            <option>Overdue only</option>
+            <option>Paid</option>
+            <option>All</option>
+          </select>
+          &nbsp; Month:
+          <select>
+            <option>All</option>
+            <option>March</option>
+            <option>April</option>
+            <option>May</option>
+            <option>June</option>
+          </select>
+          <button>Filter</button>
+        </div>
+        <table>
+          <tr>
+            <th>Invoice #</th>
+            <th>Client</th>
+            <th>Month</th>
+            <th>Due date</th>
+            <th class="n">Amount</th>
+            <th class="n">Paid</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>72</td>
+            <td>Cascadia Game Works</td>
+            <td>March</td>
+            <td>Apr 30</td>
+            <td class="n">$4,680.90</td>
+            <td class="n">$0.00</td>
+            <td class="red">Overdue</td>
+          </tr>
+          <tr>
+            <td>103</td>
+            <td>Cascadia Game Works</td>
+            <td>April</td>
+            <td>May 30</td>
+            <td class="n">$3,644.37</td>
+            <td class="n">$1,093.66</td>
+            <td class="red">Overdue</td>
+          </tr>
+          <tr>
+            <td>131</td>
+            <td>Lakeshore Provincial Digital Services</td>
+            <td>May</td>
+            <td>Jun 30</td>
+            <td class="n">$6,756.47</td>
+            <td class="n">$0.00</td>
+            <td class="red">Overdue</td>
+          </tr>
+          <tr>
+            <td>134</td>
+            <td>Cascadia Game Works</td>
+            <td>May</td>
+            <td>Jun 30</td>
+            <td class="n">$5,890.31</td>
+            <td class="n">$0.00</td>
+            <td class="red">Overdue</td>
+          </tr>
+          <tr>
+            <td>140</td>
+            <td>Open Harbor Foundation</td>
+            <td>May</td>
+            <td>Jun 30</td>
+            <td class="n">$4,543.21</td>
+            <td class="n">$0.00</td>
+            <td class="red">Overdue</td>
+          </tr>
+          <tr>
+            <td>145</td>
+            <td>Bluefin Capital Group</td>
+            <td>June</td>
+            <td>Jul 30</td>
+            <td class="n">$24,912.06</td>
+            <td class="n">$0.00</td>
+            <td>Sent</td>
+          </tr>
+          <tr>
+            <td>152</td>
+            <td>Meridian Health Network</td>
+            <td>June</td>
+            <td>Jul 30</td>
+            <td class="n">$14,408.75</td>
+            <td class="n">$0.00</td>
+            <td>Sent</td>
+          </tr>
+          <tr>
+            <td>160</td>
+            <td>Northgate University</td>
+            <td>June</td>
+            <td>Jul 30</td>
+            <td class="n">$20,399.32</td>
+            <td class="n">$0.00</td>
+            <td>Sent</td>
+          </tr>
+        </table>
+        <p style="margin-top: 12px">
+          Total unpaid: <b>$193,224</b> &nbsp;|&nbsp; Overdue:
+          <b class="red">$24,422</b>
+        </p>
+      </div>
+
+      <!-- RESERVE -->
+      <div class="page" id="reserve">
+        <h1>Reserve Capacity</h1>
+        <p class="sub">Book servers for a project</p>
+        <div class="two">
+          <div>
+            <div class="form-row">
+              <label>Project</label
+              ><select>
+                <option>Mosaic Platform</option>
+                <option>Granite Migration</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Region</label
+              ><select>
+                <option>US East</option>
+                <option>US West</option>
+                <option>Canada Central</option>
+                <option>EU Central</option>
+                <option>Asia Pacific</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Resource type</label
+              ><select>
+                <option>g4.gpu-4 (4 GPU, 256 GB)</option>
+                <option>g4.gpu-1 (1 GPU, 64 GB)</option>
+                <option>c5.standard-16 (16 vCPU, 64 GB)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Quantity</label
+              ><input type="number" value="2" style="width: 70px" />
+            </div>
+            <div class="form-row">
+              <label>Start date</label><input type="date" value="2026-08-10" />
+            </div>
+            <div class="form-row">
+              <label>End date</label><input type="date" value="2026-08-16" />
+            </div>
+            <div class="form-row">
+              <label>Zones</label
+              ><select>
+                <option>Any zone</option>
+                <option>Same zone</option>
+                <option>Spread across zones</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-top: 16px">
+              <label></label><button>Check availability</button>
+              <button class="main">Submit reservation</button>
+            </div>
+          </div>
+          <div>
+            <h2 style="margin-top: 0">Prices for g4.gpu-4</h2>
+            <table>
+              <tr>
+                <th>Pricing</th>
+                <th class="n">Per hour</th>
+              </tr>
+              <tr>
+                <td>On demand</td>
+                <td class="n">$5.18</td>
+              </tr>
+              <tr>
+                <td>Peak (8am – 8pm)</td>
+                <td class="n">$5.96</td>
+              </tr>
+              <tr>
+                <td>Off-peak (8pm – 8am)</td>
+                <td class="n">$3.89</td>
+              </tr>
+              <tr>
+                <td>Reserved (500+ hrs/month)</td>
+                <td class="n">$3.53</td>
+              </tr>
+            </table>
+            <h2>Availability</h2>
+            <p>2 available in US East for Aug 10 – Aug 16.</p>
+            <p>Estimated cost: <b>$1,654.80</b><br />Deposit (10%): $165.48</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>CloudNine Systems &middot; Team CloudNine</footer>
+
+    <script>
+      function show(p) {
+        document
+          .querySelectorAll(".page")
+          .forEach((d) => d.classList.toggle("on", d.id === p));
+        document
+          .querySelectorAll("header a")
+          .forEach((a) => a.classList.toggle("on", a.dataset.p === p));
+        history.replaceState(null, "", "#" + p);
+      }
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest("[data-p]");
+        if (a) show(a.dataset.p);
+      });
+      if (location.hash) show(location.hash.slice(1));
+    </script>
+  </body>
+</html>
